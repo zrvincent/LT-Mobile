@@ -3,6 +3,9 @@ package com.ktqdev.mp3lite;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -22,18 +25,20 @@ public class ListsSong extends ListActivity {
 
     public ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
     ImageView btnBack;
+    int totalSong = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lists_song);
 
+
+
         btnBack = (ImageView) findViewById(R.id.btnBack);
         btnBack.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(i);
+                finish();
             }
         });
         ArrayList<HashMap<String, String>> songsListData = new ArrayList<HashMap<String, String>>();
@@ -49,13 +54,14 @@ public class ListsSong extends ListActivity {
 
             // adding HashList to ArrayList
             songsListData.add(song);
+            totalSong++;
         }
-
         // Adding menuItems to ListView
         ListAdapter adapter = new SimpleAdapter(this, songsListData,
                 R.layout.item_song, new String[] { "songTitle" }, new int[] {
                 R.id.songTitle });
         setListAdapter(adapter);
+
 
         // selecting single ListView item
         ListView lv = getListView();
@@ -71,6 +77,7 @@ public class ListsSong extends ListActivity {
                 Intent in = new Intent(ListsSong.this, MainActivity.class);
                 // Sending songIndex to MainActivity
                 in.putExtra("songIndex", songIndex);
+                in.putExtra("totalSong",totalSong);
                 setResult(100, in);
                 // Closing ListsSong
                 finish();

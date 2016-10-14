@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Mp3Lite</string>
+    <string name="number_song">0 of 0</string>
+    <string name="current_time">0:00</string>
+    <string name="total_time">0:00</string>
+    <string name="about">About</string>
+    <string name="close">Close</string>
+    <string name="version">Version 1.0.0</string>
 </resources>

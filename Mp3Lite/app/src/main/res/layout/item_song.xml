@@ -2,10 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
+    android:orientation="horizontal"
     android:padding="5dp">
+
+    <ImageView
+        android:layout_gravity="center_vertical"
+        android:id="@+id/img_song"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/song_item"/>
     <TextView
+        android:layout_gravity="center_vertical"
         android:id="@+id/songTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
